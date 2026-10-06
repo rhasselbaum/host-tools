@@ -24,6 +24,8 @@
               pkgs.makeWrapper
               pkgs.iputils
               pkgs.systemd
+              pkgs.pipewire
+              pkgs.wireplumber
             ];
 
             installPhase = ''
@@ -32,6 +34,10 @@
               chmod +x $out/bin/network_or_bust.py
               makeWrapper $out/bin/network_or_bust.py $out/bin/network-or-bust \
                 --set PATH ${pkgs.iputils}/bin:${pkgs.systemd}/bin
+              cp $src/src/switch_audio.py $out/bin
+              chmod +x $out/bin/switch_audio.py
+              makeWrapper $out/bin/switch_audio.py $out/bin/switch-audio \
+                --prefix PATH : ${pkgs.pipewire}/bin:${pkgs.wireplumber}/bin
             '';
           };
         };
