@@ -34,9 +34,9 @@
               chmod +x $out/bin/network_or_bust.py
               makeWrapper $out/bin/network_or_bust.py $out/bin/network-or-bust \
                 --set PATH ${pkgs.iputils}/bin:${pkgs.systemd}/bin
-              cp $src/src/switch_audio.py $out/bin
-              chmod +x $out/bin/switch_audio.py
-              makeWrapper $out/bin/switch_audio.py $out/bin/switch-audio \
+              cp $src/src/switch_caprica_audio.py $out/bin
+              chmod +x $out/bin/switch_caprica_audio.py
+              makeWrapper $out/bin/switch_caprica_audio.py $out/bin/switch-caprica-audio \
                 --prefix PATH : ${pkgs.pipewire}/bin:${pkgs.wireplumber}/bin
             '';
           };
